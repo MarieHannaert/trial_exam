@@ -18,4 +18,20 @@ Marie you are now in: trial_exam]$ git add exercise3.mwb exercise3.sql
 Marie you are now in: trial_exam]$ git commit -m "adding both files from exercise3 MySQL workbench" exercise3.mwb exercise3.sql 
 Marie you are now in: trial_exam]$ git status
 Marie you are now in: trial_exam]$ git push
+Marie you are now in: trial_exam]$ git commit -m "adding first version of exercise1" exercise1.txt 
+Marie you are now in: trial_exam]$ git push
+Marie you are now in: trial_exam]$ mariadb -uroot -p 
+MariaDB [(none)]> create database vacation;
+MariaDB [(none)]> Grant all on vacation.* to Marie@localhost;
+MariaDB [(none)]> exit
+Marie you are now in: trial_exam]$ mariadb vacation < vacation.sql 
+Marie you are now in: trial_exam]$ mariadb vacation
+MariaDB [vacation]> show databases;
+MariaDB [vacation]> show tables;
+Marie you are now in: trial_exam]$ touch exercise4.txt
+Marie you are now in: trial_exam]$ nano exercise4.txt 
+Marie you are now in: trial_exam]$ git status
+Marie you are now in: trial_exam]$ git add exercise4.txt 
+Marie you are now in: trial_exam]$ git commit -m "adding exercise4 from the trial_exam" exercise4.txt
+Marie you are now in: trial_exam]$ git push
 
