@@ -1,0 +1,100 @@
+MariaDB [vacation]> select guestname, guestaddress from guest where guestaddress like '% London';
++--------------+--------------------+
+| guestname    | guestaddress       |
++--------------+--------------------+
+| John Kay     | 56 High St, London |
+| Mike Ritchie | 18 Tain St, London |
++--------------+--------------------+
+2 rows in set (0.000 sec)
+
+MariaDB [vacation]> select roomno, type, price from room where type="double" AND price<40.00 or type="family"  AND price<40.00 order by price asc;
++--------+--------+-------+
+| roomno | type   | price |
++--------+--------+-------+
+|    801 | double | 15.00 |
+|    601 | double | 29.00 |
+|   1001 | double | 30.00 |
+|   1101 | family | 35.00 |
+|    701 | family | 39.00 |
++--------+--------+-------+
+5 rows in set (0.000 sec)
+MariaDB [vacation]> select * from booking where dateto is null;
++---------+---------+------------+--------+--------+
+| hotelno | guestno | datefrom   | dateto | roomno |
++---------+---------+------------+--------+--------+
+| ch01    |   10006 | 2023-04-21 | NULL   |   1101 |
+| dc01    |   10003 | 2023-05-20 | NULL   |   1001 |
+| fb01    |   10001 | 2023-05-01 | NULL   |    701 |
++---------+---------+------------+--------+--------+
+3 rows in set (0.000 sec)
+MariaDB [vacation]> select avg(price) as average_room_price from room;
++--------------------+
+| average_room_price |
++--------------------+
+|          35.748333 |
++--------------------+
+1 row in set (0.000 sec)
+MariaDB [vacation]> select type, sum(price) as total_price_double_rooms from room where type="double";
++--------+--------------------------+
+| type   | total_price_double_rooms |
++--------+--------------------------+
+| double |                   160.00 |
++--------+--------------------------+
+1 row in set (0.000 sec)
+MariaDB [vacation]> select count(guestno) as total_bookings_in_august from booking where datefrom like "%-08-%";
++--------------------------+
+| total_bookings_in_august |
++--------------------------+
+|                        0 |
++--------------------------+
+1 row in set (0.000 sec)
+MariaDB [vacation]> select price, type from room join hotel on room.hotelno = hotel.hotelno where hotelname="Latham" ;
++-------+--------+
+| price | type   |
++-------+--------+
+| 18.00 | single |
+| 30.00 | double |
+| 35.00 | family |
++-------+--------+
+3 rows in set (0.000 sec)
+MariaDB [vacation]> select guest.guestname, booking.datefrom, booking.dateto from guest join booking on guest.guestno=booking.guestno;
++--------------+------------+------------+
+| guestname    | datefrom   | dateto     |
++--------------+------------+------------+
+| Tina Murphy  | 2023-04-21 | NULL       |
+| Mike Ritchie | 2023-04-25 | 2023-05-06 |
+| Mary Tregear | 2023-05-20 | NULL       |
+| Tony Shaw    | 2023-05-13 | 2023-05-15 |
+| John Kay     | 2023-04-01 | 2023-04-08 |
+| John Kay     | 2023-05-01 | NULL       |
+| Mike Ritchie | 2023-01-04 | 2023-01-29 |
+| Joe Keogh    | 2023-04-15 | 2023-05-15 |
+| Carol Farrel | 2023-05-02 | 2023-05-07 |
+| Mary Tregear | 2023-04-05 | 2023-04-04 |
+| Carol Farrel | 2023-05-12 | 2031-05-04 |
++--------------+------------+------------+
+11 rows in set (0.000 sec)
+MariaDB [vacation]> select guest.guestname, room.type, room.price from room join hote
+l on hotel.hotelno=room.hotelno join booking on hotel.hotelno=booking.hotelno join gu
+est on guest.guestno=booking.guestno where hotelname="Latham";
++--------------+--------+-------+
+| guestname    | type   | price |
++--------------+--------+-------+
+| Mary Tregear | single | 18.00 |
+| Mary Tregear | double | 30.00 |
+| Mary Tregear | family | 35.00 |
+| Tony Shaw    | single | 18.00 |
+| Tony Shaw    | double | 30.00 |
+| Tony Shaw    | family | 35.00 |
++--------------+--------+-------+
+6 rows in set (0.000 sec)
+MariaDB [vacation]> select count(room.roomno), hotel.hotelname from room join hotel on room.hotelno=hotel.hotelno where hotel.city="London" group by hotelname;
++--------------------+-----------------+
+| count(room.roomno) | hotelname       |
++--------------------+-----------------+
+|                  2 | Omni Shoreham   |
+|                  2 | Phoenix Park    |
+|                  3 | The Tower Hotel |
++--------------------+-----------------+
+3 rows in set (0.001 sec)
+
