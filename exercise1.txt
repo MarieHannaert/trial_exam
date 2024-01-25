@@ -1,0 +1,21 @@
+Marie you are now in: BIT_04_Databases_and_data_management]$ git clone git@github.com:MarieHannaert/trial_exam.git
+Marie you are now in: trial_exam]$ touch exercise1.txt
+Marie you are now in: trial_exam]$ nano exercise1.txt
+Marie you are now in: trial_exam]$ git status
+Marie you are now in: trial_exam]$ git config --global --add safe.directory /media/sf_SF/BIT_04_Databases_and_data_management/trial_exam
+Marie you are now in: trial_exam]$ git add exercise1.txt 
+Marie you are now in: trial_exam]$ git status 
+Marie you are now in: trial_exam]$ git commit exercise1.txt 
+Marie you are now in: trial_exam]$ git push
+Marie you are now in: trial_exam]$ touch exercise2.txt
+Marie you are now in: trial_exam]$ nano exercise2.txt
+Marie you are now in: trial_exam]$ git status
+Marie you are now in: trial_exam]$ git add exercise2.txt
+Marie you are now in: trial_exam]$ git commit -m "adding exercise2 to github" exercise2.txt
+Marie you are now in: trial_exam]$ git push
+Marie you are now in: trial_exam]$ git status  
+Marie you are now in: trial_exam]$ git add exercise3.mwb exercise3.sql 
+Marie you are now in: trial_exam]$ git commit -m "adding both files from exercise3 MySQL workbench" exercise3.mwb exercise3.sql 
+Marie you are now in: trial_exam]$ git status
+Marie you are now in: trial_exam]$ git push
+
