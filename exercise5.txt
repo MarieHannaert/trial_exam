@@ -1,0 +1,672 @@
+Restaurants> db.restaurants.find({},{restaurant_id:1, name:1, borough:1, cuisine:1, __id:0})
+[
+  {
+    borough: 'Bronx',
+    cuisine: 'Bakery',
+    name: 'Morris Park Bake Shop',
+    restaurant_id: '30075445'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'Irish',
+    name: 'Dj Reynolds Pub And Restaurant',
+    restaurant_id: '30191841'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'Riviera Caterer',
+    restaurant_id: '40356018'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Hamburgers',
+    name: "Wendy'S",
+    restaurant_id: '30112340'
+  },
+  {
+    borough: 'Queens',
+    cuisine: 'Jewish/Kosher',
+    name: 'Tov Kosher Kitchen',
+    restaurant_id: '40356068'
+  },
+  {
+    borough: 'Queens',
+    cuisine: 'American',
+    name: 'Brunos On The Boulevard',
+    restaurant_id: '40356151'
+  },
+  {
+    borough: 'Staten Island',
+    cuisine: 'Jewish/Kosher',
+    name: 'Kosher Island',
+    restaurant_id: '40356442'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Delicatessen',
+    name: "Wilken'S Fine Food",
+    restaurant_id: '40356483'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'Regina Caterers',
+    restaurant_id: '40356649'
+  },
+  {
+    borough: 'Bronx',
+    cuisine: 'American',
+    name: 'Wild Asia',
+    restaurant_id: '40357217'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Ice Cream, Gelato, Yogurt, Ices',
+    name: 'Taste The Tropics Ice Cream',
+    restaurant_id: '40356731'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'C & C Catering Service',
+    restaurant_id: '40357437'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'American',
+    name: '1 East 66Th Street Kitchen',
+    restaurant_id: '40359480'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Jewish/Kosher',
+    name: 'Seuda Foods',
+    restaurant_id: '40360045'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Ice Cream, Gelato, Yogurt, Ices',
+    name: 'Carvel Ice Cream',
+    restaurant_id: '40360076'
+  },
+  {
+    borough: 'Queens',
+    cuisine: 'Ice Cream, Gelato, Yogurt, Ices',
+    name: 'Carvel Ice Cream',
+    restaurant_id: '40361322'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Delicatessen',
+    name: 'Nordic Delicacies',
+    restaurant_id: '40361390'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'American',
+    name: 'Glorious Food',
+    restaurant_id: '40361521'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'The Movable Feast',
+    restaurant_id: '40361606'
+  },
+  {
+    borough: 'Queens',
+    cuisine: 'Delicatessen',
+    name: "Sal'S Deli",
+    restaurant_id: '40361618'
+  }
+]
+Type "it" for more
+Restaurants> db.restaurants.find({borough:'Bronx'},{name:1, borough:1, _id:0}).limit(5).skip(2)
+[
+  { borough: 'Bronx', name: 'Carvel Ice Cream' },
+  { borough: 'Bronx', name: 'Happy Garden' },
+  { borough: 'Bronx', name: 'Happy Garden' },
+  { borough: 'Bronx', name: 'Manhem Club' },
+  {
+    borough: 'Bronx',
+    name: 'The New Starling Athletic Club Of The Bronx'
+  }
+]
+Restaurants> db.restaurants.find({"grades.score":{$gt:90}},{name:1, _id:0})
+[
+  { name: "Murals On 54/Randolphs'S" },
+  { name: 'Gandhi' },
+  { name: 'Bella Napoli' }
+]
+Restaurants> db.restaurants.find({$and:[{cuisine:{$ne:"American"},"grades.score":{$gt:70},"coord.0":{$lt:-65.754168}}]},{name:1, _id:0})
+Restaurants> db.restaurants.find({$and:[{borough:'Bronx'}],$or:[{cuisine:'American'}, {cuisine:'Chinese'}]},{name:1,_id:0})
+[
+  { name: 'Wild Asia' },
+  { name: 'Happy Garden' },
+  { name: 'Happy Garden' },
+  { name: 'Manhem Club' },
+  { name: 'The New Starling Athletic Club Of The Bronx' },
+  { name: 'Yankee Tavern' },
+  { name: 'The Punch Bowl' },
+  { name: 'Munchtime' },
+  { name: 'Marina Delray' },
+  { name: 'Cool Zone' },
+  { name: 'Beaver Pond' },
+  { name: 'African Market (Baboon Cafe)' },
+  { name: 'Blue Bay Restaurant' },
+  { name: 'Bronx Grill' },
+  { name: "P & K'S Grill" },
+  { name: "John Mulligan'S Fireside Pub" },
+  { name: 'Quality Cafe & Restaurant' },
+  { name: 'Riverdale Diner' },
+  { name: 'Castlehill Diner' },
+  { name: 'Short Stop Restaurant' }
+]
+Type "it" for more
+Restaurants> db.restaurants.find({'grades.score':{$lte:10}},{_id:0, restaurant_id:1, name:1, borough:1, cuisine:1})
+[
+  {
+    borough: 'Bronx',
+    cuisine: 'Bakery',
+    name: 'Morris Park Bake Shop',
+    restaurant_id: '30075445'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'Irish',
+    name: 'Dj Reynolds Pub And Restaurant',
+    restaurant_id: '30191841'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'Riviera Caterer',
+    restaurant_id: '40356018'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Hamburgers',
+    name: "Wendy'S",
+    restaurant_id: '30112340'
+  },
+  {
+    borough: 'Queens',
+    cuisine: 'American',
+    name: 'Brunos On The Boulevard',
+    restaurant_id: '40356151'
+  },
+  {
+    borough: 'Staten Island',
+    cuisine: 'Jewish/Kosher',
+    name: 'Kosher Island',
+    restaurant_id: '40356442'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Delicatessen',
+    name: "Wilken'S Fine Food",
+    restaurant_id: '40356483'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'Regina Caterers',
+    restaurant_id: '40356649'
+  },
+  {
+    borough: 'Bronx',
+    cuisine: 'American',
+    name: 'Wild Asia',
+    restaurant_id: '40357217'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Ice Cream, Gelato, Yogurt, Ices',
+    name: 'Taste The Tropics Ice Cream',
+    restaurant_id: '40356731'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'C & C Catering Service',
+    restaurant_id: '40357437'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'American',
+    name: '1 East 66Th Street Kitchen',
+    restaurant_id: '40359480'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Jewish/Kosher',
+    name: 'Seuda Foods',
+    restaurant_id: '40360045'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Ice Cream, Gelato, Yogurt, Ices',
+    name: 'Carvel Ice Cream',
+    restaurant_id: '40360076'
+  },
+  {
+    borough: 'Queens',
+    cuisine: 'Ice Cream, Gelato, Yogurt, Ices',
+    name: 'Carvel Ice Cream',
+    restaurant_id: '40361322'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Delicatessen',
+    name: 'Nordic Delicacies',
+    restaurant_id: '40361390'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'American',
+    name: 'Glorious Food',
+    restaurant_id: '40361521'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'The Movable Feast',
+    restaurant_id: '40361606'
+  },
+  {
+    borough: 'Queens',
+    cuisine: 'Delicatessen',
+    name: "Sal'S Deli",
+    restaurant_id: '40361618'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'Delicatessen',
+    name: "Bully'S Deli",
+    restaurant_id: '40361708'
+  }
+]
+Type "it" for more
+Restaurants> db.restaurants.find({$nor:[{borough:'Staten Island'},{borough:'Queens'},{borough:'Bronxor Brooklyn'}]},{_id:0, restaurant_id:1, name:1, borough:1, cuisine:1})
+[
+  {
+    borough: 'Bronx',
+    cuisine: 'Bakery',
+    name: 'Morris Park Bake Shop',
+    restaurant_id: '30075445'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'Irish',
+    name: 'Dj Reynolds Pub And Restaurant',
+    restaurant_id: '30191841'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'Riviera Caterer',
+    restaurant_id: '40356018'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Hamburgers',
+    name: "Wendy'S",
+    restaurant_id: '30112340'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Delicatessen',
+    name: "Wilken'S Fine Food",
+    restaurant_id: '40356483'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'Regina Caterers',
+    restaurant_id: '40356649'
+  },
+  {
+    borough: 'Bronx',
+    cuisine: 'American',
+    name: 'Wild Asia',
+    restaurant_id: '40357217'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Ice Cream, Gelato, Yogurt, Ices',
+    name: 'Taste The Tropics Ice Cream',
+    restaurant_id: '40356731'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'C & C Catering Service',
+    restaurant_id: '40357437'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'American',
+    name: '1 East 66Th Street Kitchen',
+    restaurant_id: '40359480'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Jewish/Kosher',
+    name: 'Seuda Foods',
+    restaurant_id: '40360045'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Ice Cream, Gelato, Yogurt, Ices',
+    name: 'Carvel Ice Cream',
+    restaurant_id: '40360076'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Delicatessen',
+    name: 'Nordic Delicacies',
+    restaurant_id: '40361390'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'American',
+    name: 'Glorious Food',
+    restaurant_id: '40361521'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'The Movable Feast',
+    restaurant_id: '40361606'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'Delicatessen',
+    name: "Bully'S Deli",
+    restaurant_id: '40361708'
+  },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'Chinese',
+    name: 'May May Kitchen',
+    restaurant_id: '40358429'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'Chicken',
+    name: "Harriet'S Kitchen",
+    restaurant_id: '40362098'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'American',
+    name: 'P & S Deli Grocery',
+    restaurant_id: '40362264'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'American',
+    name: 'Angelika Film Center',
+    restaurant_id: '40362274'
+  }
+]
+Type "it" for more
+Restaurants> db.restaurants.find({$and:[{'grades.grade':'A'},{'grades.score':11},{'grades.date':'ISODate(\'2014-08-11T00:00:00Z\')' }]},{_id:0, restaurant_id:1, name:1, bborough:1, cuisine:1})
+Restaurants> db.restaurants.find({}, { _id: 0, name: 1, cuisine: 1, borough:1 }).sort({ cuisine: 1 } ,{borough:-1})
+[
+  {
+    borough: 'Manhattan',
+    cuisine: 'Afghan',
+    name: 'Afghan Kebab House'
+  },
+  { borough: 'Manhattan', cuisine: 'Afghan', name: 'Khyber Pass' },
+  {
+    borough: 'Manhattan',
+    cuisine: 'Afghan',
+    name: 'Afghan Kebab House #1'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'Afghan',
+    name: 'Ariana Kebab House'
+  },
+  { borough: 'Bronx', cuisine: 'African', name: 'African Terrace' },
+  { borough: 'Brooklyn', cuisine: 'African', name: 'Madiba' },
+  {
+    borough: 'Queens',
+    cuisine: 'African',
+    name: 'Africana Restaurant'
+  },
+  {
+    borough: 'Bronx',
+    cuisine: 'African',
+    name: 'Ebe Ye Yie African Restaurant'
+  },
+  { borough: 'Brooklyn', cuisine: 'American', name: 'Riviera Caterer' },
+  {
+    borough: 'Queens',
+    cuisine: 'American',
+    name: 'Brunos On The Boulevard'
+  },
+  { borough: 'Brooklyn', cuisine: 'American', name: 'Regina Caterers' },
+  { borough: 'Bronx', cuisine: 'American', name: 'Wild Asia' },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'C & C Catering Service'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'American',
+    name: '1 East 66Th Street Kitchen'
+  },
+  { borough: 'Manhattan', cuisine: 'American', name: 'Glorious Food' },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'The Movable Feast'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'American',
+    name: 'P & S Deli Grocery'
+  },
+  {
+    borough: 'Manhattan',
+    cuisine: 'American',
+    name: 'Angelika Film Center'
+  },
+  { borough: 'Manhattan', cuisine: 'American', name: 'Downtown Deli' },
+  {
+    borough: 'Brooklyn',
+    cuisine: 'American',
+    name: 'Mejlander & Mulgannon'
+  }
+]
+Type "it" for more
+Restaurants> db.restaurants.find({"address.street":{$not:/street/}},{name:1,address:1,_id:0})
+[
+  {
+    address: {
+      building: '1007',
+      coord: [ -73.856077, 40.848447 ],
+      street: 'Morris Park Ave',
+      zipcode: '10462'
+    },
+    name: 'Morris Park Bake Shop'
+  },
+  {
+    address: {
+      building: '351',
+      coord: [ -73.98513559999999, 40.7676919 ],
+      street: 'West   57 Street',
+      zipcode: '10019'
+    },
+    name: 'Dj Reynolds Pub And Restaurant'
+  },
+  {
+    address: {
+      building: '2780',
+      coord: [ -73.98241999999999, 40.579505 ],
+      street: 'Stillwell Avenue',
+      zipcode: '11224'
+    },
+    name: 'Riviera Caterer'
+  },
+  {
+    address: {
+      building: '469',
+      coord: [ -73.961704, 40.662942 ],
+      street: 'Flatbush Avenue',
+      zipcode: '11225'
+    },
+    name: "Wendy'S"
+  },
+  {
+    address: {
+      building: '97-22',
+      coord: [ -73.8601152, 40.7311739 ],
+      street: '63 Road',
+      zipcode: '11374'
+    },
+    name: 'Tov Kosher Kitchen'
+  },
+  {
+    address: {
+      building: '8825',
+      coord: [ -73.8803827, 40.7643124 ],
+      street: 'Astoria Boulevard',
+      zipcode: '11369'
+    },
+    name: 'Brunos On The Boulevard'
+  },
+  {
+    address: {
+      building: '2206',
+      coord: [ -74.1377286, 40.6119572 ],
+      street: 'Victory Boulevard',
+      zipcode: '10314'
+    },
+    name: 'Kosher Island'
+  },
+  {
+    address: {
+      building: '7114',
+      coord: [ -73.9068506, 40.6199034 ],
+      street: 'Avenue U',
+      zipcode: '11234'
+    },
+    name: "Wilken'S Fine Food"
+  },
+  {
+    address: {
+      building: '6409',
+      coord: [ -74.00528899999999, 40.628886 ],
+      street: '11 Avenue',
+      zipcode: '11219'
+    },
+    name: 'Regina Caterers'
+  },
+  {
+    address: {
+      building: '2300',
+      coord: [ -73.8786113, 40.8502883 ],
+      street: 'Southern Boulevard',
+      zipcode: '10460'
+    },
+    name: 'Wild Asia'
+  },
+  {
+    address: {
+      building: '1839',
+      coord: [ -73.9482609, 40.6408271 ],
+      street: 'Nostrand Avenue',
+      zipcode: '11226'
+    },
+    name: 'Taste The Tropics Ice Cream'
+  },
+  {
+    address: {
+      building: '7715',
+      coord: [ -73.9973325, 40.61174889999999 ],
+      street: '18 Avenue',
+      zipcode: '11214'
+    },
+    name: 'C & C Catering Service'
+  },
+  {
+    address: {
+      building: '1',
+      coord: [ -73.96926909999999, 40.7685235 ],
+      street: 'East   66 Street',
+      zipcode: '10065'
+    },
+    name: '1 East 66Th Street Kitchen'
+  },
+  {
+    address: {
+      building: '705',
+      coord: [ -73.9653967, 40.6064339 ],
+      street: 'Kings Highway',
+      zipcode: '11223'
+    },
+    name: 'Seuda Foods'
+  },
+  {
+    address: {
+      building: '203',
+      coord: [ -73.97822040000001, 40.6435254 ],
+      street: 'Church Avenue',
+      zipcode: '11218'
+    },
+    name: 'Carvel Ice Cream'
+  },
+  {
+    address: {
+      building: '265-15',
+      coord: [ -73.7032601, 40.7386417 ],
+      street: 'Hillside Avenue',
+      zipcode: '11004'
+    },
+    name: 'Carvel Ice Cream'
+  },
+  {
+    address: {
+      building: '6909',
+      coord: [ -74.0259567, 40.6353674 ],
+      street: '3 Avenue',
+      zipcode: '11209'
+    },
+    name: 'Nordic Delicacies'
+  },
+  {
+    address: {
+      building: '522',
+      coord: [ -73.95171, 40.767461 ],
+      street: 'East   74 Street',
+      zipcode: '10021'
+    },
+    name: 'Glorious Food'
+  },
+  {
+    address: {
+      building: '284',
+      coord: [ -73.9829239, 40.6580753 ],
+      street: 'Prospect Park West',
+      zipcode: '11215'
+    },
+    name: 'The Movable Feast'
+  },
+  {
+    address: {
+      building: '129-08',
+      coord: [ -73.839297, 40.78147 ],
+      street: '20 Avenue',
+      zipcode: '11356'
+    },
+    name: "Sal'S Deli"
+  }
+]
+Type "it" for more
+

@@ -34,4 +34,15 @@ Marie you are now in: trial_exam]$ git status
 Marie you are now in: trial_exam]$ git add exercise4.txt 
 Marie you are now in: trial_exam]$ git commit -m "adding exercise4 from the trial_exam" exercise4.txt
 Marie you are now in: trial_exam]$ git push
+Marie you are now in: trial_exam]$ git add exercise1.txt 
+Marie you are now in: trial_exam]$ git commit -m "updating exercise1" exercise1.txt 
+Marie you are now in: trial_exam]$ mongoimport restaurants.json -d Restaurants
+Marie you are now in: trial_exam]$ touch exercise5.txt
+Marie you are now in: trial_exam]$ nano exercise5.txt
+Marie you are now in: trial_exam]$ mongosh
+test> show dbs
+test> use Restaurants
+Restaurants> show collections;
+Restaurants> db.restaurants.findOne()
+Marie you are now in: trial_exam]$ git status
 
