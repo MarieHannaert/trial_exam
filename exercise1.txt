@@ -45,4 +45,17 @@ test> use Restaurants
 Restaurants> show collections;
 Restaurants> db.restaurants.findOne()
 Marie you are now in: trial_exam]$ git status
+Marie you are now in: trial_exam]$ git add exercise5.txt exercise1.txt 
+Marie you are now in: trial_exam]$ git commit -m "adding exercise5 and updating exercise1" exercise5.txt exercise1.txt 
+Marie you are now in: trial_exam]$ git push
+Marie you are now in: trial_exam]$ touch exercise6.txt
+Marie you are now in: trial_exam]$ nano exercise6.txt 
+Marie you are now in: trial_exam]$ firefox &
+Marie you are now in: trial_exam]$ git status
+Marie you are now in: trial_exam]$ git add exercise6.txt 
+Marie you are now in: trial_exam]$ git commit -m "adding exercise6" exercise6.txt
+Marie you are now in: trial_exam]$ git push
+Marie you are now in: trial_exam]$ git add exercise1.txt
+Marie you are now in: trial_exam]$ git commit -m "adding update of exercise1" exercise1.txt
+Marie you are now in: trial_exam]$ git push
 
