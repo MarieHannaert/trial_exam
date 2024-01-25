@@ -1,0 +1,10 @@
+1NF 
+	DB(*staffNO*, denstistname, patientNO, PatientName, *appointment-date*, *appointment-time*, surgeryNO)
+2NF
+	DB(*staffNO*, patientNO, PatientName, *appointment-date*, *appointment-time*, surgeryNO)
+	staffDB(*staffNO*, denstistname)
+3NF 
+	appointmentDB(*staffNO*, patientNO, *appointment-date*, *appointment-time*,)
+	staffDB(*staffNO*, denstistname)
+	patientDB(*patientNO*, PatientName, surgeryNO)
+	
